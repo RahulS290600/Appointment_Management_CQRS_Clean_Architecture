@@ -10,8 +10,8 @@ namespace AppointmentManagement.Application.Features.Appointment.Queries.GetAppo
     {
         public string VisitorName { get; set; } = string.Empty;
         public string Consultant { get; set; } = string.Empty;
-        public DateTime Date { get; set; }
+        public DateTime Date { get; set; } = DateTime.UtcNow;
         public string PhoneNumber { get; set; } = string.Empty;
-        public DateTime? CreatedDate { get; set; }
+        public DateTime? CreatedDate { get; set; } = DateTime.UtcNow;
     }
 }

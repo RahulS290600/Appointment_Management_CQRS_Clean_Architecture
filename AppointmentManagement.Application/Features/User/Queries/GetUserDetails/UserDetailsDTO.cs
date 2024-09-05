@@ -11,6 +11,6 @@ namespace AppointmentManagement.Application.Features.User.Queries.GetUserDetails
         public string UserName { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;
         public string PhoneNumber { get; set; } = string.Empty;
-        public DateTime? CreatedDate { get; set; }
+        public DateTime? CreatedDate { get; set; } = DateTime.UtcNow;
     }
 }

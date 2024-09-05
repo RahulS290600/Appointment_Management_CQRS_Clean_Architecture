@@ -10,6 +10,6 @@ namespace AppointmentManagement.Application.Features.Appointment.Queries.GetAllA
     {
         public string VisitorName { get; set; } = string.Empty;
         public string Consultant { get; set; } = string.Empty;
-        public DateTime Date { get; set; }
+        public DateTime Date { get; set; } = DateTime.UtcNow;
     }
 }

@@ -18,7 +18,7 @@ namespace AppointmentManagement.Application.Features.Appointment.Commands.Update
                 .MinimumLength(10).WithMessage("Phone number should have 10 charaters");
 
             RuleFor(p => p.Date)
-                .GreaterThan(DateTime.UtcNow)
+                .GreaterThan(DateTime.UtcNow.Date)
                 .WithMessage("Can't take appointment for this date");
         }
     }

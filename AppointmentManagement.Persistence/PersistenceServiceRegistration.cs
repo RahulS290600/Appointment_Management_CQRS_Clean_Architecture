@@ -13,8 +13,9 @@ namespace AppointmentManagement.Persistence
         {
             services.AddDbContext<AppointmentDatabaseContext>(options =>
             {
-                options.UseSqlServer(configuration.GetConnectionString("AppointmentManagementConnectionString"));
+                options.UseNpgsql(configuration.GetConnectionString("AppointmentManagementConnectionString"));
             });
+
 
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             services.AddScoped<IAppointmentRepository, AppointmentRepository>();

@@ -20,10 +20,10 @@ namespace AppointmentManagement.Persistence.Configuration
                     AppointmentId = 1,
                     VisitorName = "John Doe",
                     Consultant = "Toni Kroos",
-                    Date = new DateTime(2024, 09, 10, 14, 30, 0),
+                    Date = new DateTime(2024, 09, 10, 14, 30, 0, DateTimeKind.Utc),
                     PhoneNumber = "9234567890",
-                    CreatedDate = DateTime.Now,
-                    LastUpdatedDate = DateTime.Now
+                    CreatedDate = DateTime.UtcNow,
+                    LastUpdatedDate = DateTime.UtcNow
                 });
         }
     }
