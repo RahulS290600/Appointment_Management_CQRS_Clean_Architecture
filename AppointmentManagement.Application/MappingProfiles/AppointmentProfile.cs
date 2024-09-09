@@ -1,4 +1,6 @@
-﻿using AppointmentManagement.Application.Features.Appointment.Queries.GetAllAppointments;
+﻿using AppointmentManagement.Application.Features.Appointment.Commands.CreateAppointment;
+using AppointmentManagement.Application.Features.Appointment.Commands.UpdateAppointment;
+using AppointmentManagement.Application.Features.Appointment.Queries.GetAllAppointments;
 using AppointmentManagement.Application.Features.Appointment.Queries.GetAppointmentDetails;
 using AppointmentManagement.Domain;
 using AutoMapper;
@@ -15,7 +17,9 @@ namespace AppointmentManagement.Application.MappingProfiles
         public AppointmentProfile()
         {
             CreateMap<AppointmentDTO, Appointment>().ReverseMap();
-            CreateMap<Appointment, AppointmentDetailsDTO>();
+            CreateMap<Appointment, AppointmentDetailsDTO>().ReverseMap();
+            CreateMap<CreateAppointmentCommand, Appointment>();
+            CreateMap<UpdateAppointmentCommand, Appointment>();
         }
     }
 }
