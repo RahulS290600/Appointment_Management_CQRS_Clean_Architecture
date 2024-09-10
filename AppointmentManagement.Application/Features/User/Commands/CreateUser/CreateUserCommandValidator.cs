@@ -1,4 +1,5 @@
-﻿using FluentValidation;
+﻿using AppointmentManagement.Application.Contracts.Persistance;
+using FluentValidation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,9 @@ namespace AppointmentManagement.Application.Features.User.Commands.CreateUser
 {
     public class CreateUserCommandValidator : AbstractValidator<CreateUserCommand>
     {
-        public CreateUserCommandValidator()
+        private readonly IUserRepository _userRepository;
+
+        public CreateUserCommandValidator(IUserRepository userRepository)
         {
             RuleFor(p => p.UserName)
                  .NotEmpty().WithMessage("Username cannot be empty")
@@ -22,6 +25,7 @@ namespace AppointmentManagement.Application.Features.User.Commands.CreateUser
                  .NotNull()
                  .MaximumLength(10).WithMessage("Maximum length should have 10 characters")
                  .MinimumLength(10).WithMessage("Phone number should have 10 charaters");
+            this._userRepository = userRepository;
         }
     }
 }

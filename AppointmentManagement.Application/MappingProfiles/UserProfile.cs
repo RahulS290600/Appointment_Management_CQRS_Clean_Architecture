@@ -1,5 +1,7 @@
 ﻿using AppointmentManagement.Application.Features.Appointment.Queries.GetAllAppointments;
 using AppointmentManagement.Application.Features.Appointment.Queries.GetAppointmentDetails;
+using AppointmentManagement.Application.Features.User.Commands.CreateUser;
+using AppointmentManagement.Application.Features.User.Commands.UpdateUser;
 using AppointmentManagement.Application.Features.User.Queries.GetAllUsers;
 using AppointmentManagement.Application.Features.User.Queries.GetUserDetails;
 using AppointmentManagement.Domain;
@@ -18,6 +20,8 @@ namespace AppointmentManagement.Application.MappingProfiles
         {
             CreateMap<UserDTO, User>().ReverseMap();
             CreateMap<User, UserDetailsDTO>().ReverseMap();
+            CreateMap<CreateUserCommand, User>();
+            CreateMap<UpdateUserCommand, User>();
         }
     }
 }

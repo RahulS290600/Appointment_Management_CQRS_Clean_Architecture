@@ -23,7 +23,7 @@ namespace AppointmentManagement.Application.Features.User.Commands.CreateUser
 
         public async Task<int> Handle(CreateUserCommand request, CancellationToken cancellationToken)
         {
-            var validator = new CreateUserCommandValidator();
+            var validator = new CreateUserCommandValidator(_userRepository);
             var validationResult = await validator.ValidateAsync(request);
             if (!validationResult.IsValid)
             {

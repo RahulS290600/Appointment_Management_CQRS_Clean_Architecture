@@ -1,4 +1,5 @@
-﻿using FluentValidation;
+﻿using AppointmentManagement.Application.Contracts.Persistance;
+using FluentValidation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,9 @@ namespace AppointmentManagement.Application.Features.Appointment.Commands.Create
 {
     public class CreateAppointmentCommandValidator : AbstractValidator<CreateAppointmentCommand>
     {
-        public CreateAppointmentCommandValidator()
+        private readonly IAppointmentRepository _appointmentRepository;
+
+        public CreateAppointmentCommandValidator(IAppointmentRepository appointmentRepository)
         {
             RuleFor(p => p.VisitorName)
                 .NotEmpty().WithMessage("Name cannot be empty")
@@ -25,6 +28,7 @@ namespace AppointmentManagement.Application.Features.Appointment.Commands.Create
             RuleFor(p => p.Date)
                 .GreaterThan(DateTime.UtcNow)
                 .WithMessage("Can't take appointment for this date");
+            this._appointmentRepository = appointmentRepository;
         }
     }
 }

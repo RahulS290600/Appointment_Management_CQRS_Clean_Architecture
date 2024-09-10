@@ -24,7 +24,7 @@ namespace AppointmentManagement.Application.Features.Appointment.Commands.Create
         public async Task<int> Handle(CreateAppointmentCommand request, CancellationToken cancellationToken)
         {
             //Validate incoming data
-            var validator = new CreateAppointmentCommandValidator();
+            var validator = new CreateAppointmentCommandValidator(_appointmentRepository);
             var validationResult = await validator.ValidateAsync(request);
             if (!validationResult.IsValid)
             {

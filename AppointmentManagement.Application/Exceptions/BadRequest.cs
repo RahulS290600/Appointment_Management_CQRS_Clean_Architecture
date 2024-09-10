@@ -16,12 +16,8 @@ namespace AppointmentManagement.Application.Exceptions
 
         public BadRequestException(string message, ValidationResult validationResult) : base(message)
         {
-            ValidationErrors = new();
-            foreach (var error in validationResult.Errors) //add Errors 
-            {
-                ValidationErrors.Add(error.ToString());
-            }
+            ValidationErrors = validationResult.ToDictionary();
         }
-        public List<string> ValidationErrors { get; set; }
+        public IDictionary<string, string[]> ValidationErrors { get; set; }
     }
 }

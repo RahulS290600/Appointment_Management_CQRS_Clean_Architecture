@@ -24,7 +24,7 @@ namespace AppointmentManagement.Application.Features.User.Commands.UpdateUser
         public async Task<Unit> Handle(UpdateUserCommand request, CancellationToken cancellationToken)
         {
             //Validate incoming data
-            var validator = new UpdateUserCommandValidator();
+            var validator = new UpdateUserCommandValidator(_userRepository);
             var validationResult = await validator.ValidateAsync(request);
             if (!validationResult.IsValid)
             {
