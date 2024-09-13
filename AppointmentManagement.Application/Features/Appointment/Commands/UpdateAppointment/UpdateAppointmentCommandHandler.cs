@@ -29,18 +29,13 @@ namespace AppointmentManagement.Application.Features.Appointment.Commands.Update
             //Validate incoming data
             var validator = new UpdateAppointmentCommandValidator(_appointmentRepository);
             var validationResult = await validator.ValidateAsync(request);
-            if (!validationResult.IsValid)
+            if (validationResult.Errors.Any())
             {
-                _appLogger.LogWarning("Validation errors in update request");
+                _appLogger.LogWarning("Validation errors in update request for {0}", nameof(Appointment), request.AppointmentId);
                 throw new BadRequestException("Invalid Request", validationResult);
             }
             //Convert to domiin entity type
             var appointmentToUpdate = _mapper.Map<Domain.Appointment>(request);
-            if (appointmentToUpdate == null)
-            {
-                throw new NotFoundException(nameof(Appointment), request.VisitorName); // Handle the case where the appointment doesn't exist
-            }
-            _mapper.Map(request, appointmentToUpdate);
             //Add to database
             await _appointmentRepository.UpdateAsync(appointmentToUpdate);
             //Return unit value

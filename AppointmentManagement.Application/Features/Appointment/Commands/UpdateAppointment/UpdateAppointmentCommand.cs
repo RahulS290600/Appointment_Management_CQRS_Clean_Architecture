@@ -9,6 +9,7 @@ namespace AppointmentManagement.Application.Features.Appointment.Commands.Update
 {
     public class UpdateAppointmentCommand : IRequest<Unit>
     {
+        public int AppointmentId { get; set; }
         public string VisitorName { get; set; } = string.Empty;
         public string Consultant { get; set; } = string.Empty;
         public DateTime Date { get; set; }
