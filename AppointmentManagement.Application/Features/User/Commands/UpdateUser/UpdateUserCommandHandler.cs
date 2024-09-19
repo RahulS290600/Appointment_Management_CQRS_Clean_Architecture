@@ -1,5 +1,8 @@
-﻿using AppointmentManagement.Application.Contracts.Persistance;
+﻿using AppointmentManagement.Application.Contracts.Logging;
+using AppointmentManagement.Application.Contracts.Persistance;
 using AppointmentManagement.Application.Exceptions;
+using AppointmentManagement.Application.Features.Appointment.Commands.UpdateAppointment;
+using AppointmentManagement.Domain;
 using AutoMapper;
 using MediatR;
 using System;
@@ -14,11 +17,13 @@ namespace AppointmentManagement.Application.Features.User.Commands.UpdateUser
     {
         private readonly IMapper _mapper;
         private readonly IUserRepository _userRepository;
+        private readonly IAppLogger<UpdateUserCommandHandler> _appLogger;
 
-        public UpdateUserCommandHandler(IMapper mapper, IUserRepository userRepository)
+        public UpdateUserCommandHandler(IMapper mapper, IUserRepository userRepository, IAppLogger<UpdateUserCommandHandler> appLogger)
         {
             this._mapper = mapper;
             this._userRepository = userRepository;
+            this._appLogger = appLogger;
         }
 
         public async Task<Unit> Handle(UpdateUserCommand request, CancellationToken cancellationToken)
@@ -26,8 +31,9 @@ namespace AppointmentManagement.Application.Features.User.Commands.UpdateUser
             //Validate incoming data
             var validator = new UpdateUserCommandValidator(_userRepository);
             var validationResult = await validator.ValidateAsync(request);
-            if (!validationResult.IsValid)
+            if (validationResult.Errors.Any())
             {
+                _appLogger.LogWarning("Validation errors in update request for {0}", nameof(User), request.UserId);
                 throw new BadRequestException("Invalid Request", validationResult);
             }
             //Convert to domiin entity type

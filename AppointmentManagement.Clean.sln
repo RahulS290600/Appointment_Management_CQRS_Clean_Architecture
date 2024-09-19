@@ -25,7 +25,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppointmentManagement.Infra
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppointmentManagement.Api", "AppointmentManagement.Api\AppointmentManagement.Api.csproj", "{BB3CF7E2-6AF4-4B11-9791-EE5A70389BA3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppointmentManagement.BlazorUI", "AppointmentManagement.BlazorUI\AppointmentManagement.BlazorUI.csproj", "{DEC1E5DC-4DEB-409C-878F-6541BAE2964C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppointmentManagement.BlazorUI", "AppointmentManagement.BlazorUI\AppointmentManagement.BlazorUI.csproj", "{DEC1E5DC-4DEB-409C-878F-6541BAE2964C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppointmentManagement.Identity", "AppointmentManagement.Identity\AppointmentManagement.Identity.csproj", "{1CDB9E10-6ABC-4627-B0E0-26E25922ADF6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,10 @@ Global
 		{DEC1E5DC-4DEB-409C-878F-6541BAE2964C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DEC1E5DC-4DEB-409C-878F-6541BAE2964C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DEC1E5DC-4DEB-409C-878F-6541BAE2964C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CDB9E10-6ABC-4627-B0E0-26E25922ADF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CDB9E10-6ABC-4627-B0E0-26E25922ADF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CDB9E10-6ABC-4627-B0E0-26E25922ADF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CDB9E10-6ABC-4627-B0E0-26E25922ADF6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -72,6 +78,7 @@ Global
 		{D55ABBEB-7BD9-4CF8-B002-AB3E0BBFED95} = {B13B501B-2655-4FDA-AC3F-B9E1EDBDA925}
 		{BB3CF7E2-6AF4-4B11-9791-EE5A70389BA3} = {7EB6F578-6E2F-47E3-B358-A1C647DA1830}
 		{DEC1E5DC-4DEB-409C-878F-6541BAE2964C} = {E7AE60BC-2588-4BFE-8B8F-0A92D008AAFF}
+		{1CDB9E10-6ABC-4627-B0E0-26E25922ADF6} = {B13B501B-2655-4FDA-AC3F-B9E1EDBDA925}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C1FD6F68-9893-4C48-B8F4-30CFD6FC0824}
